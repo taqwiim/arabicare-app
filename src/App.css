@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.chart-container {
+  padding: 20px;
+  background-color: #003285;
+  height: 200px;
+}
+
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.chart {
+  margin: 20px;
+  flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
+  min-width: 280px; /* Ensures a minimum width */
+  background-color: #F5F7F8;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .charts {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart {
+    width: 100%;
+    max-width: 400px; /* Ensures the charts don't get too wide */
+  }
+}
+
+h3{
+  color: white;
+}
+
