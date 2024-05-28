@@ -616,32 +616,38 @@ export default function Grafik() {
                     Pompa Status: {pompaStatus ? <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span> : <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>}
                 </div>
                 </div>
-                <div className="charts" style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <div className="charts" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', padding: '10px' }}>
                     <div className="chart">
                         <h4>pH</h4>
-                        <Line data={phData2} options={phOptions} style={{ width: '400px', height: '300px' }} />
+                        <Line data={phData2} options={phOptions} style={{ width: '100%', height: '300px' }} />
                         <div style={{ textAlign: 'center' }}>
-                            <h5>pH Terakhir:</h5>
-                            <p style={{ fontWeight:'bold' }}>{phData2.datasets[0].data.length > 0 ? phData2.datasets[0].data[phData2.datasets[0].data.length - 1] : 'Data tidak tersedia'}</p>
+                        <h5>pH Terakhir:</h5>
+                        <p style={{ fontWeight: 'bold' }}>
+                            {phData2.datasets[0].data.length > 0 ? phData2.datasets[0].data[phData2.datasets[0].data.length - 1] : 'Data tidak tersedia'}
+                        </p>
                         </div>
                     </div>
                     <div className="chart">
                         <h4>Kelembapan</h4>
-                        <Line data={kelembapanData2} options={kelembapanOptions} style={{ width: '400px', height: '300px' }} />
+                        <Line data={kelembapanData2} options={kelembapanOptions} style={{ width: '100%', height: '300px' }} />
                         <div style={{ textAlign: 'center' }}>
-                            <h5>Kelembapan Terakhir:</h5>
-                            <p style={{ fontWeight:'bold' }}>{kelembapanData2.datasets[0].data.length > 0 ? kelembapanData2.datasets[0].data[kelembapanData2.datasets[0].data.length - 1] : 'Data tidak tersedia'}</p>
+                        <h5>Kelembapan Terakhir:</h5>
+                        <p style={{ fontWeight: 'bold' }}>
+                            {kelembapanData2.datasets[0].data.length > 0 ? kelembapanData2.datasets[0].data[kelembapanData2.datasets[0].data.length - 1] : 'Data tidak tersedia'}
+                        </p>
                         </div>
                     </div>
                     <div className="chart">
                         <h4>Suhu</h4>
-                        <Line data={suhuData2} options={suhuOptions} style={{ width: '400px', height: '300px' }} />
+                        <Line data={suhuData2} options={suhuOptions} style={{ width: '100%', height: '300px' }} />
                         <div style={{ textAlign: 'center' }}>
-                            <h5>Suhu Terakhir:</h5>
-                            <p style={{ fontWeight:'bold' }}>{suhuData2.datasets[0].data.length > 0 ? suhuData2.datasets[0].data[suhuData2.datasets[0].data.length - 1] : 'Data tidak tersedia'}</p>
+                        <h5>Suhu Terakhir:</h5>
+                        <p style={{ fontWeight: 'bold' }}>
+                            {suhuData2.datasets[0].data.length > 0 ? suhuData2.datasets[0].data[suhuData2.datasets[0].data.length - 1] : 'Data tidak tersedia'}
+                        </p>
                         </div>
                     </div>
-                </div>
+                    </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
   <h3 style={{
     textAlign: 'center',

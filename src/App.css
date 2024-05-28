@@ -44,31 +44,37 @@
 
 .charts {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: space-around;
+  padding: 10px;
 }
 
 .chart {
   margin: 20px;
-  flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
-  min-width: 280px; /* Ensures a minimum width */
+  flex: 1 1 300px;
+  min-width: 280px;
+  max-width: 100%;
   background-color: #F5F7F8;
   border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 @media (max-width: 768px) {
-  .charts {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .chart {
     width: 100%;
-    max-width: 400px; /* Ensures the charts don't get too wide */
+    max-width: 400px;
   }
 }
 
-h3{
+@media (max-width: 480px) {
+  .chart {
+    margin: 10px 0;
+  }
+}
+
+h3 {
   color: black;
 }
 
