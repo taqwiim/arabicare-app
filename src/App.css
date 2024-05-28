@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: white;
 }
 
 .App-logo {
@@ -39,8 +40,6 @@
 
 .chart-container {
   padding: 20px;
-  background-color: #003285;
-  height: 200px;
 }
 
 .charts {
@@ -70,6 +69,6 @@
 }
 
 h3{
-  color: white;
+  color: black;
 }
 
