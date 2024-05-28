@@ -603,11 +603,18 @@ export default function Grafik() {
         <div>
             <h3 style={{ fontSize: '30px', backgroundColor: '#39A7FF', margin: '0px 0px', color: 'white', padding: '8px' }}>ARABICARE</h3>
             <div ref={componentRef} className="chart-container">
-
-                <div style={{ padding: '10px', display: 'flex', justifyContent:'center' }}>
-                    <div className="pompa-status" style={{ textAlign: 'center', fontSize: '20px', width:'15%', borderRadius: '10px', backgroundColor: '#EEF7FF', padding: '10px' }}>
-                        Pompa Status: {pompaStatus ? <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span> : <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>}
-                    </div>
+            <div style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}>
+                <div className="pompa-status" style={{
+                    textAlign: 'center',
+                    fontSize: '20px',
+                    width: '80%',
+                    maxWidth: '300px',
+                    borderRadius: '10px',
+                    backgroundColor: '#EEF7FF',
+                    padding: '10px'
+                }}>
+                    Pompa Status: {pompaStatus ? <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span> : <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>}
+                </div>
                 </div>
                 <div className="charts" style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div className="chart">
@@ -635,9 +642,19 @@ export default function Grafik() {
                         </div>
                     </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent:'center' }}>
-                    <h3 style={{ textAlign: 'center', fontSize: '20px', width:'15%', borderRadius: '10px', backgroundColor: '#EEF7FF', padding: '10px' }}>Riwayat Monitoring</h3>
-                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+  <h3 style={{
+    textAlign: 'center',
+    fontSize: '20px',
+    width: '80%',
+    maxWidth: '300px',
+    borderRadius: '10px',
+    backgroundColor: '#EEF7FF',
+    padding: '10px'
+  }}>
+    Riwayat Monitoring
+  </h3>
+</div>
                 <div className="data-table" style={{ marginTop: '20px' }}>
                     <input
                         type="text"
@@ -668,9 +685,19 @@ export default function Grafik() {
                     </table>
                     <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
-                <div style={{ display: 'flex', justifyContent:'center', marginTop: '50px' }}>
-                    <h3 style={{ textAlign: 'center', fontSize: '20px', width:'15%', borderRadius: '10px', backgroundColor: '#EEF7FF', padding: '10px' }}>Riwayat Pompa</h3>
-                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+  <h3 style={{
+    textAlign: 'center',
+    fontSize: '20px',
+    width: '80%',
+    maxWidth: '300px',
+    borderRadius: '10px',
+    backgroundColor: '#EEF7FF',
+    padding: '10px'
+  }}>
+    Riwayat Pompa
+  </h3>
+</div>
                 <div className="data-table" style={{ marginTop: '20px' }}>
                     <input
                         type="text"
