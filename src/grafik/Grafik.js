@@ -664,7 +664,7 @@ export default function Grafik() {
                 <div className="data-table" style={{ marginTop: '20px' }}>
                     <input
                         type="text"
-                        placeholder="Cari berdasarkan pH, Kelembapan, Suhu, atau Timestamp..."
+                        placeholder="Cari Tanggal..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         style={{ marginBottom: '10px', padding: '8px', width: '30%', outline: 'none', display: 'flex', borderRadius: '5px' }}
@@ -707,7 +707,7 @@ export default function Grafik() {
                 <div className="data-table" style={{ marginTop: '20px' }}>
                     <input
                         type="text"
-                        placeholder="Cari berdasarkan waktu..."
+                        placeholder="Cari Tanggal..."
                         value={searchPompa}
                         onChange={(e) => setSearchPompa(e.target.value)}
                         style={{ marginBottom: '10px', padding: '8px', width: '30%', outline: 'none', display: 'flex', borderRadius: '5px' }}
