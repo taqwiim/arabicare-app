@@ -78,3 +78,51 @@ h3 {
   color: black;
 }
 
+@media (max-width: 768px) {
+  .responsive-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .responsive-header img {
+    width: 10%; /* Ubah ukuran gambar */
+    margin-bottom: 10px; /* Beri margin bawah */
+  }
+
+  .responsive-header h3 {
+    font-size: 10px; /* Ubah ukuran teks */
+  }
+}
+
+.header-container {
+  background-color: #39A7FF;
+  margin: 0;
+  color: white;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 10%;
+}
+
+.title {
+  font-size: 30px;
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .header-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .logo {
+      width: 30%;
+      margin-bottom: 10px;
+  }
+}
+
+
+

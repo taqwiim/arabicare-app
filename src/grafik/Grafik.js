@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { db } from '../config/firebase';
 import { ref, onValue } from 'firebase/database';
 import { Line } from 'react-chartjs-2';
+import Image from '../images/image.png'
 import {
     Chart as ChartJS,
     LineElement,
@@ -406,26 +407,22 @@ export default function Grafik() {
     };
 
     const filteredData = phData.labels
-        .map((label, index) => ({
-            timestamp: label,
-            ph: phData.datasets[0].data[index],
-            kelembapan: kelembapanData.datasets[0].data[index],
-            suhu: suhuData.datasets[0].data[index]
-        }))
-        .filter(item => isNumber(item.ph) && isNumber(item.kelembapan) && isNumber(item.suhu))
-        .filter(item =>
-            item.ph.toString().includes(searchTerm) ||
-            item.kelembapan.toString().includes(searchTerm) ||
-            item.suhu.toString().includes(searchTerm) ||
-            item.timestamp.toString().includes(searchTerm)
-        );
+    .map((label, index) => ({
+        timestamp: label,
+        ph: phData.datasets[0].data[index],
+        kelembapan: kelembapanData.datasets[0].data[index],
+        suhu: suhuData.datasets[0].data[index]
+    }))
+    .filter(item => isNumber(item.ph) && isNumber(item.kelembapan) && isNumber(item.suhu))
+    .filter(item =>
+        item.timestamp.slice(0, 10).includes(searchTerm) // Change here to filter by first 10 characters of timestamp
+    );
 
-    // Sort filteredData by timestamp
     filteredData.reverse();
 
     const filteredPompaData = pompaHistory
     .filter(item =>
-        item.timestamp.toString().includes(searchPompa) ||
+        item.timestamp.slice(0, 10).includes(searchPompa) || // Change here to filter by first 10 characters of timestamp
         item.status.toString().includes(searchPompa)
     );
 
@@ -528,7 +525,6 @@ export default function Grafik() {
     const pageButtons = [];
     const maxButtons = 5; // Maximum number of pagination buttons to display
 
-    // Calculate start and end page buttons to display
     let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
     let endPage = Math.min(totalPages, startPage + maxButtons - 1);
 
@@ -601,7 +597,11 @@ export default function Grafik() {
 
     return (
         <div>
-            <h3 style={{ fontSize: '30px', backgroundColor: '#39A7FF', margin: '0px 0px', color: 'white', padding: '8px' }}>ARABICARE</h3>
+            <div className="header-container">
+                <img className="logo" src={Image} alt="Logo" />
+                <h3 className="title">ARABICARE</h3>
+            </div>
+
             <div ref={componentRef} className="chart-container">
             <div style={{ padding: '10px', display: 'flex', justifyContent: 'center' }}>
                 <div className="pompa-status" style={{
@@ -649,18 +649,18 @@ export default function Grafik() {
                     </div>
                     </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
-  <h3 style={{
-    textAlign: 'center',
-    fontSize: '20px',
-    width: '80%',
-    maxWidth: '300px',
-    borderRadius: '10px',
-    backgroundColor: '#EEF7FF',
-    padding: '10px'
-  }}>
-    Riwayat Monitoring
-  </h3>
-</div>
+                    <h3 style={{
+                        textAlign: 'center',
+                        fontSize: '20px',
+                        width: '80%',
+                        maxWidth: '300px',
+                        borderRadius: '10px',
+                        backgroundColor: '#EEF7FF',
+                        padding: '10px'
+                    }}>
+                        Riwayat Monitoring
+                    </h3>
+                    </div>
                 <div className="data-table" style={{ marginTop: '20px' }}>
                     <input
                         type="text"
@@ -692,18 +692,18 @@ export default function Grafik() {
                     <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
-  <h3 style={{
-    textAlign: 'center',
-    fontSize: '20px',
-    width: '80%',
-    maxWidth: '300px',
-    borderRadius: '10px',
-    backgroundColor: '#EEF7FF',
-    padding: '10px'
-  }}>
-    Riwayat Pompa
-  </h3>
-</div>
+                    <h3 style={{
+                        textAlign: 'center',
+                        fontSize: '20px',
+                        width: '80%',
+                        maxWidth: '300px',
+                        borderRadius: '10px',
+                        backgroundColor: '#EEF7FF',
+                        padding: '10px'
+                    }}>
+                        Riwayat Pompa
+                    </h3>
+                </div>
                 <div className="data-table" style={{ marginTop: '20px' }}>
                     <input
                         type="text"
