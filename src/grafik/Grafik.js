@@ -513,23 +513,25 @@ export default function Grafik() {
 
 
     const PompaStatus = ({ data }) => {
-    if (data === undefined || data === null || (Array.isArray(data) && data.length === 0)) {
-        return <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>;
-    } else {
-        return <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span>;
-    }
-};
-
+        console.log(data)
+        if (data === undefined || data === null) {
+            
+            return "Null";
+        }
+        const statusText = data === 1 ? "Nyala" : "Mati";
+        const statusColor = data === 1 ? "green" : "red";
+        return <span style={{ color: statusColor, fontWeight: 'bold' }}>{statusText}</span>;
+    };
+    
+    const latestPompaStatus = pompaHistory.length > 0 ? pompaHistory[pompaHistory.length - 1].status : null;
   
-  
-  const PompaPagination = ({ totalPages, currentPage, setCurrentPage }) => {
+    const PompaPagination = ({ totalPages, currentPage, setCurrentPage }) => {
     const pageButtons = [];
-    const maxButtons = 5; // Maximum number of pagination buttons to display
+    const maxButtons = 5; 
 
     let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
     let endPage = Math.min(totalPages, startPage + maxButtons - 1);
 
-    // Adjust startPage and endPage if there are not enough buttons
     if (endPage - startPage + 1 < maxButtons) {
         endPage = Math.min(totalPages, startPage + maxButtons - 1);
         startPage = Math.max(1, endPage - maxButtons + 1);
@@ -614,7 +616,18 @@ export default function Grafik() {
                     backgroundColor: '#EEF7FF',
                     padding: '10px'
                 }}>
-                    Pompa Status: {PompaStatus ? <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span> : <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>}
+                    <div className="pompa-status" style={{
+                        textAlign: 'center',
+                        fontSize: '20px',
+                        width: '80%',
+                        maxWidth: '300px',
+                        borderRadius: '10px',
+                        backgroundColor: '#EEF7FF',
+                        padding: '10px'
+                    }}>
+                        Pompa Status: <PompaStatus data={latestPompaStatus} />
+                    </div>
+
                 </div>
                 </div>
                 <div className="charts" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', padding: '10px' }}>
