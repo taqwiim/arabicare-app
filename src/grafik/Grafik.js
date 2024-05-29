@@ -125,7 +125,6 @@ export default function Grafik() {
         ]
     });
 
-    const [pompaStatus, setPompaStatus] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -514,11 +513,13 @@ export default function Grafik() {
 
 
     const PompaStatus = ({ data }) => {
-      if (data === undefined || data === null) {
-          return "Null";
-      }
-      return data === 1 ? "Nyala" : "Mati";
-  };
+    if (data === undefined || data === null || (Array.isArray(data) && data.length === 0)) {
+        return <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>;
+    } else {
+        return <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span>;
+    }
+};
+
   
   
   const PompaPagination = ({ totalPages, currentPage, setCurrentPage }) => {
@@ -613,7 +614,7 @@ export default function Grafik() {
                     backgroundColor: '#EEF7FF',
                     padding: '10px'
                 }}>
-                    Pompa Status: {pompaStatus ? <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span> : <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>}
+                    Pompa Status: {PompaStatus ? <span style={{ color: 'green', fontWeight: 'bold' }}>Nyala</span> : <span style={{ color: 'red', fontWeight: 'bold' }}>Mati</span>}
                 </div>
                 </div>
                 <div className="charts" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', padding: '10px' }}>
