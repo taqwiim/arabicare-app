@@ -795,12 +795,12 @@ const [kaliumData2, setKaliumData2] = useState({
     .reverse();
 
     
-    const filteredPompaData = suhuData.labels
+const filteredPompaData = suhuData.labels
     .map((label, index) => ({
         timestamp: label,
         kelembapan: kelembapanData.datasets[0].data[index],
         suhu: suhuData.datasets[0].data[index],
-        status: pompaHistory[index] // Tambahkan status jika tersedia
+        status: pompaHistory[index] ? pompaHistory[index].status : null // Pastikan status diambil dengan benar
     }))
     .filter(item => isNumber(item.kelembapan) && isNumber(item.suhu))
     .reduce((acc, item) => {
@@ -812,7 +812,9 @@ const [kaliumData2, setKaliumData2] = useState({
         if (existingEntry) {
             existingEntry.kelembapan.push(item.kelembapan);
             existingEntry.suhu.push(item.suhu);
-            existingEntry.status = item.status;
+            if (item.status !== null) {
+                existingEntry.status = item.status; // Pastikan status diperbarui hanya jika tidak null
+            }
         } else {
             acc.push({
                 timestamp: item.timestamp,
@@ -823,17 +825,12 @@ const [kaliumData2, setKaliumData2] = useState({
         }
         return acc;
     }, [])
-    .map(entry => ({
-        timestamp: entry.timestamp,
-        status: entry.status, // Pastikan status ditampilkan
-        kelembapan: parseFloat((entry.kelembapan.reduce((a, b) => a + b, 0) / entry.kelembapan.length).toFixed(2)),
-        suhu: parseFloat((entry.suhu.reduce((a, b) => a + b, 0) / entry.suhu.length).toFixed(2)),
-    }))
     .filter(item => 
         typeof item.timestamp === 'string' && item.timestamp.includes(searchPompa)
     )
     .reverse();
 
+console.log(filteredPompaData); // Debugging: Periksa output data
 
 
 
