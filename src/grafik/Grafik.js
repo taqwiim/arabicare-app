@@ -1186,17 +1186,17 @@ console.log(filteredPompaData); // Debugging: Periksa output data
                             <p style={{ 
                                 fontWeight: 'bold',
                                 color: kaliumData2.datasets[0].data.length > 0 
-                                    ? (kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] < 150 
+                                    ? (kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] < 250 
                                         ? 'red' 
-                                        : kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] >= 150 
+                                        : kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] >= 250 
                                             ? 'green' 
                                             : 'green') 
                                     : 'black'
                                 }}>
                                 {kaliumData2.datasets[0].data.length > 0 
-                                    ? kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] < 150  
+                                    ? kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] < 250  
                                         ? 'Kalium Terlalu Rendah' 
-                                        : kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] >= 150 
+                                        : kaliumData2.datasets[0].data[kaliumData2.datasets[0].data.length - 1] >= 250 
                                             ? 'Kalium Cukup' 
                                             : 'Cukup' 
                                     : 'Data tidak tersedia'
